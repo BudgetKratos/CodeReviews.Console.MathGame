@@ -80,17 +80,18 @@ internal class Game : BaseGame
                 numberOfTurns--;
             } while (numberOfTurns > 0);
 
+            ScoreCard.Add($"{CurrentDifficulty} {actualOperation} {score}");
+
             retry = Confirm("Again?", displayColor);
 
             if (!retry)
             {
                 DisplayMessage("Press any key to go back to the previous menu.", displayColor);
                 Console.ReadKey();
-                Menu();
+                return;
             }
         }
 
-        ScoreCard.Add($"{CurrentDifficulty} {actualOperation} {score}");
     }
 
     public (int, int) GenerateOperands(bool isComplex)
